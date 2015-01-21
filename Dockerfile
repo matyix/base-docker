@@ -31,3 +31,4 @@ RUN yum install -y cmake zlib-devel openssl-devel
 RUN curl http://www.eu.apache.org/dist/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz|tar xz  -C /usr/share
 ENV M2_HOME /usr/share/apache-maven-3.2.1
 ENV PATH $PATH:$M2_HOME/bin
+ 
