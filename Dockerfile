@@ -26,6 +26,7 @@ ENV PATH $PATH:$JAVA_HOME/bin
 # devel tools
 RUN yum groupinstall "Development Tools" -y
 RUN yum install -y cmake zlib-devel openssl-devel
+RUN yum install -y python python-pip python-dev
 
 # maven
 RUN curl http://www.eu.apache.org/dist/maven/maven-3/3.2.1/binaries/apache-maven-3.2.1-bin.tar.gz|tar xz  -C /usr/share
