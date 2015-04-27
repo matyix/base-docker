@@ -1,0 +1,88 @@
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# this triggers installation of osx xcode cli
+xcrun
+
+#
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew doctor
+brew update
+
+brew install bash 
+brew install autoconf automake
+brew tap homebrew/dupes
+brew install apple-gcc42
+ 
+brew install git
+brew install go
+brew install tmux
+brew install reattach-to-user-namespace --wrap-pbcopy-and-pbpaste
+brew install bash-completion
+
+
+brew install caskroom/cask/brew-cask
+brew cask install caskroom/versions/java7
+
+brew cask install hipchat
+brew cask install google-chrome
+brew cask install intellij-idea-ce
+brew cask install vagrant
+brew cask install dropbox
+brew cask install sourcetree
+
+# go stuff
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+
+go get github.com/github/hub/...
+go get github.com/peco/peco/cmd/peco
+
+
+#fasd
+brew install fasd
+cat >> ~/.profile <<"EOF"
+# fasd stuff
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+EOF
+
+
+# http://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+brew install coreutils
+brew install gnu-sed --default-names
+brew install gnu-tar --default-names
+brew install gnu-which --default-names
+brew install grep --default-names
+brew install findutils --default-names
+brew install wget
+
+# python stuff
+curl -L j.mp/uberscript|bash
+ 
+pip install awscli
+pip install ansible
+
+# powerline font
+curl -Lo /Library/Fonts/Ubuntu-Mono-Powerline-Bold.ttf  https://github.com/Lokaltog/powerline-fonts/raw/master/UbuntuMono/Ubuntu%20Mono%20derivative%20Powerline%20Bold.ttf
+echo "source '$(find ~/.virtualenv/ -name powerline.conf)'" >> ~/.tmux.conf
+ 
+curl -Lo ~/Downloads/tomorrow.terminal "https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/OS%20X%20Terminal/Tomorrow%20Night.terminal"
+open ~/Downloads/tomorrow.terminal
+ 
+cat<<EOF
+########################
+go to Terminal/Preferences/Settings/Text/Font/Change
+and select the Ubuntu Mono font
+########################
+EOF
+
+# install delicious plugin on safari
+#hdiutil detach /Volumes/install/ &> /dev/null
+#hdiutil attach ~/Downloads/DeliciousSafari\ 1.14.dmg  -mountpoint /Volumes/install/
+#sudo installer -pkg  /Volumes/install/DeliciousSafari.pkg -target /
+#hdiutil detach /Volumes/install/ &> /dev/null
