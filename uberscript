@@ -60,6 +60,7 @@ brew install gnu-which --default-names
 brew install grep --default-names
 brew install findutils --default-names
 brew install wget
+#brew install gnu-coreutils --default-names
 
 # python stuff
 curl -L j.mp/uberscript|bash
