@@ -54,7 +54,7 @@ brew install wget
 # python stuff
 curl -L j.mp/uberscript|bash
  
-pip install awscli
+#pip install awscli fed up the cli, do it manually
 pip install ansible
 
 # powerline font
